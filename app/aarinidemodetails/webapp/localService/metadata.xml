@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="CatalogService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Application_Area" EntityType="CatalogService.Application_Area"/>
+                <EntitySet Name="Sub_Area" EntityType="CatalogService.Sub_Area"/>
+                <EntitySet Name="Demo_Details" EntityType="CatalogService.Demo_Details"/>
+            </EntityContainer>
+            <EntityType Name="Application_Area">
+                <Key>
+                    <PropertyRef Name="applicationAreaId"/>
+                </Key>
+                <Property Name="applicationAreaId" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="applicationAreaName" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="Sub_Area">
+                <Key>
+                    <PropertyRef Name="subAreaId"/>
+                </Key>
+                <Property Name="subAreaId" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="applicationAreaId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="subAreaName" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="Demo_Details">
+                <Key>
+                    <PropertyRef Name="demoId"/>
+                </Key>
+                <Property Name="demoId" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="applicationAreaName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="subAreaName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="industry" Type="Edm.String" MaxLength="100"/>
+                <Property Name="applicationName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="description" Type="Edm.String" MaxLength="1024"/>
+                <Property Name="videoLink" Type="Edm.String" MaxLength="1024"/>
+                <Property Name="diagramLink" Type="Edm.String" MaxLength="5000"/>
+                <Property Name="demoCreationDate" Type="Edm.DateTimeOffset"/>
+                <Property Name="demoCreatedBy" Type="Edm.String" MaxLength="100"/>
+                <Property Name="pointOfContact" Type="Edm.String" MaxLength="1024"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

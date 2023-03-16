@@ -1,0 +1,34 @@
+### 
+POST http://localhost:4004/catalog/Demo_Details
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+"demoId": "5",
+"applicationAreaName": "Application Area 1",
+"subAreaName": "Application Sub Area 1",
+"industry": "IT",
+"applicationName": "Application 5",
+"description": "Application 1",
+"videoLink": "https://youtu.be/cb0JHilS9VQ",
+"diagramLink": [],
+"demoCreationDate": "2022-01-11T00:00:00Z",
+"demoCreatedBy": "Navin Saran",
+"pointOfContact": "Navin Saran"
+}
+
+###
+POST  http://localhost:4004/catalog/Demo_Details('5')/diagramLink
+Content-Type: application/json
+
+{ "fileName": "service.png" }
+
+### Add picture to AWS
+PUT http://localhost:4004/catalog/Demo_Details('5')/diagramLink(4f550810-9c60-4f8e-8e72-ddc2560d3697)/image
+Content-Type: image/png
+
+< ./test/images.png
+
+
+### Get images association 
+
+GET http://localhost:4004/catalog/Demo_Details('c3f4f60229')?$expand=diagramLink

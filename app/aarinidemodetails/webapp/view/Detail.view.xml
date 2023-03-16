@@ -1,0 +1,101 @@
+<mvc:View controllerName="aarinidemodetails.aarinidemodetails.controller.Detail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+    <Page id="detail" title="" showHeader="false" showSubHeader="true" class="backgroundImage">
+        <subHeader>
+            <Bar class="">
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" press="handleNavButtonPress" />
+                </contentLeft>
+                <contentMiddle>
+                    <Title text="{i18n>DetailTitle}" level="H2" class="sapUiTinyMarginTop" />
+                </contentMiddle>
+                <contentRight>
+                    <core:Icon src="sap-icon://search" class="size1 sapUiSmallMarginEnd sapUiTinyMarginTop" color="#62d7c9" size="1.4rem" />
+                    <core:Icon src="sap-icon://task" class="size1 sapUiSmallMarginEnd sapUiTinyMarginTop" color="#B167D3" size="1.4rem" />
+                    <core:Icon src="sap-icon://bell" class="size1 sapUiSmallMarginEnd sapUiTinyMarginTop" color="#FF5252" size="1.4rem" />
+                    <core:Icon src="sap-icon://grid" class="size1 sapUiSmallMarginEnd sapUiTinyMarginTop" color="#FF8427" size="1.4rem" />
+                </contentRight>
+            </Bar>
+        </subHeader>
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <f:Form id="demoDetail" editable="{editmode>/editable}">
+                    <f:title>
+                        <core:Title text="Detail" />
+                    </f:title>
+                    <f:toolbar>
+                        <Toolbar>
+                            <Title id="Detail" text="Detail" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://edit" text="Edit" type="Emphasized" press="handleEditApplication" />
+                            <Button icon="sap-icon://delete" text="Delete" type="Reject" press="handleDeleteApplication" />
+                        </Toolbar>
+                    </f:toolbar>
+                    <f:layout>
+                        <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="Application Name">
+                                    <f:fields>
+                                        <Text text="{/applicationName}" id="applicationName" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Description">
+                                    <f:fields>
+                                        <Text text="{/description}" maxLines="4" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Application Area">
+                                    <f:fields>
+                                        <Text text="{/applicationAreaName}" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Application Sub Area">
+                                    <f:fields>
+                                        <Text text="{/subAreaName}" id="subAreaName" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Industry">
+                                    <f:fields>
+                                        <Text text="{/industry}" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Demo Creation Date">
+                                    <f:fields>
+                                        <Text text="{/demoCreationDate}" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Demo Created By">
+                                    <f:fields>
+                                        <Text text="{/demoCreatedBy}" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Point Of Contact">
+                                    <f:fields>
+                                        <Text text="{/pointOfContact}" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Video Link">
+                                    <f:fields>
+                                        <Link text="Click here" href="{/videoLink}" target="_blank" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <!-- <f:FormElement label="Diagram Link">
+							<f:fields>
+								<Link text="Click here" href="{/diagramLink}" target="_blank" />
+							</f:fields>
+						</f:FormElement> -->
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                </f:Form>
+                <Carousel class="sapUiContentPadding" loop="true" pages="{/diagramLink}">
+                    <pages>
+                        <Image src="{imageURL}" alt="{fileName}" />
+                    </pages>
+                </Carousel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

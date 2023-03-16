@@ -1,0 +1,106 @@
+.sapMSplitContainerMaster {
+    width: 15rem !important;
+}
+.masterPage{
+    background-color: #333739;
+}
+.customListClass .sapMLIB {
+    border-bottom: 0px solid #e5e5e5 !important;
+}
+.customListClass .sapMSLITitleOnly {
+    color: whitesmoke !important;
+    font-size: .8rem !important;
+}
+.customPanelClass .sapMPanelWrappingDiv, .sapMPanelWrappingDivTb {
+    border-bottom: 0rem solid #a8b3bd !important;
+    background: transparent !important;
+}
+.customPanelClass .sapMPanelWrappingDiv .sapUiIcon {
+    color: whitesmoke !important;
+}
+.customPanelClass .sapMPanelHdr {
+    color: whitesmoke !important;
+    font-size: 0.85rem !important;
+}
+.customBarClass.sapMIBar.sapMSubHeader-CTX {
+    background-color: #1D66A2 !important;
+}
+.customBarClass.sapMIBar-CTX .sapMTitle {
+    color: #f7f9fb !important;
+}
+.customBarClass.sapMBar {
+    box-shadow: none !important;
+}
+.customListClass .sapMLIB.sapMLIBSelected {
+    background: #1D66A2 !important;
+} 
+.customTileClass{
+    box-sizing: border-box;
+    background: #fff;
+    /* box-shadow: 0 0 0 0.0625rem rgb(85 107 130 / 10%), 0 0.125rem 0.5rem 0 rgb(85 107 130 / 10%); */
+    box-shadow: 0px 0px 5px 1px #1a66a2;
+    border-radius: 1rem;
+    border: 0.0625rem solid transparent;
+} 
+.customTileClass:hover {
+    color: #1D66A2;
+    box-shadow: 0 0 7px 0px #FF8427;
+}
+.sapMPanelContent {
+    border-bottom: 1px grey solid !important;
+}
+
+.customViewDetailClass {
+    width: 14rem !important;
+    top: 1.15rem !important;
+    margin-bottom: 1rem !important;
+    /* top: 11.15rem !important; */
+    position: absolute !important;
+    /* background: #1D66A2 !important; */
+    left: 1.5rem;
+    bottom: 1.5rem;
+    /* background: linear-gradient(-60deg, red 50%, yellow 50%) !important; */
+    /* background: linear-gradient(to right,  #62d7c9, #B167D3 , #FF5252 , #FF8427 ) !important; */
+    background: linear-gradient(to right,  #1D66A2,#1D66A2 ) !important;
+}
+
+.customViewDetailClass:hover {
+    background: #1D66A2 !important;
+    /* background: linear-gradient(to right,  #62d7c9, #B167D3 , #FF5252 , #FF8427 ) !important; */
+}
+.customViewDetailClass .sapMBtnInner:hover { 
+    background-color: transparent !important;
+    /* background-color: linear-gradient(-60deg, #62d7c9 25%, #B167D3 25% #FF5252 25% #FF8427 25%); */
+    border: 0rem solid #eaecee !important;
+    border-radius: 0.2rem;
+    color: whitesmoke !important;
+    text-shadow: none;
+}
+
+.customViewDetailClass .sapMBtnInner { 
+    background-color: transparent !important;
+    /* background-color: linear-gradient(-60deg, #62d7c9 25%, #B167D3 25% #FF5252 25% #FF8427 25%); */
+    border: 0rem solid #eaecee !important;
+    border-radius: 0.2rem;
+    color: whitesmoke !important;
+    text-shadow: none;
+}
+
+.boldFont{
+    font-weight: bold;
+}
+.hLine{
+    width: 16.8rem;
+    margin: 1px;
+    border-top: 1px solid #607d8b;
+    margin-left: 1px;
+} 
+.font075{
+    font-size: 0.75rem !important;
+}
+.marginTop02{
+    margin-top: 0.2rem !important;
+}
+.class1{
+    background-image: url(https://i.ytimg.com/vi_webp/iyqgYe40A9E/sddefault.webp);
+}

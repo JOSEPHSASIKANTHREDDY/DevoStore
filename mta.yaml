@@ -1,0 +1,130 @@
+_schema-version: "3.1"
+ID: Aarinidemos
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: Aarinidemos-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: Aarinidemos-auth
+  - name: Aarinidemos-db
+  - name: Aarinidemos-destination
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    domain: apps.aarini.com
+  build-parameters:
+    builder: npm-ci
+- name: Aarinidemos-db-deployer
+  type: hdb
+  path: db
+  requires:
+  - name: Aarinidemos-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: aarinidemodetailsaarinidemodetails
+  type: html5
+  path: app/aarinidemodetails
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: Aarinidemos
+  type: approuter.nodejs
+  path: app/approuter
+  requires:
+  - name: srv-api
+    group: destinations
+    properties:
+      forwardAuthToken: true
+      name: srv-api
+      url: ~{srv-url}
+  - name: Aarinidemos-auth
+  - name: Aarinidemos-repo-runtime
+  - name: Aarinidemos-destination
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com
+  parameters:
+    disk-quota: 1024M
+    keep-existing-routes: true
+    memory: 1024M
+    domain: apps.aarini.com
+- name: Aarinidemos-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: Aarinidemos-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires: []
+resources:
+- name: Aarinidemos-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: Aarinidemos-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: Aarinidemos-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: Aarinidemos-destination
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: Aarinidemos-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+    service: destination
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: Aarinidemos-repo-runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: Aarinidemos-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: Aarinidemos-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npx -p @sap/cds-dk cds build --production

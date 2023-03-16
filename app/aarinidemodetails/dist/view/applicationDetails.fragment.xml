@@ -1,0 +1,93 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:upload="sap.m.upload">
+    <Dialog title="" showHeader="false" contentWidth="45rem">
+        <content>
+            <f:Form id="applicationDetailForm" editable="true">
+                <f:title>
+                    <core:Title text="Enter Application Details" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="2" emptySpanL="1" emptySpanM="1" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Application Name">
+                                <f:fields>
+                                    <Input value="{/applicationName}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Description">
+                                <f:fields>
+                                    <TextArea value="{/description}" rows="5" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Application Area">
+                                <f:fields>
+                                    <!-- <Input value="{/applicationAreaName}" /> -->
+                                    <ComboBox id="applicationAreaName" items="{
+										path: '/applicationAreaName',
+										sorter: { path: 'text' }
+									}">
+                                        <core:Item key="{applicationAreaName}" text="{applicationAreaName}" />
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Application Sub Area">
+                                <f:fields>
+                                    <!-- <Input value="{/subAreaName}" id="subAreaName" /> -->
+                                    <ComboBox id="subAreaName" items="{
+										path: '/subAreaName',
+										sorter: { path: 'text' }
+									}">
+                                        <core:Item key="{subAreaName}" text="{subAreaName}" />
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Industry">
+                                <f:fields>
+                                    <!-- <Input value="{/industry}" /> -->
+                                    <ComboBox id="industry" items="{
+										path: '/industry',
+										sorter: { path: 'text' }
+									}">
+                                        <core:Item key="{key}" text="{name}" />
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Demo Creation Date">
+                                <f:fields>
+                                    <DatePicker value="{/demoCreationDate}" valueFormat="yyyy-MM-dd" displayFormat="long" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Demo Created By">
+                                <f:fields>
+                                    <Input value="{/demoCreatedBy}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Point Of Contact">
+                                <f:fields>
+                                    <Input value="{/pointOfContact}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Video Link">
+                                <f:fields>
+                                    <Input value="{/videoLink}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Diagram Link">
+                                <f:fields>
+                                    <!-- <Input value="{/diagramLink}" /> -->
+                                    <u:FileUploader id="fileUploader" multiple="true" name="fileUpload" change="handleFilePathChange" tooltip="Upload images to add preview to your demostore application" uploadComplete="handleUploadComplete" />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </content>
+        <buttons>
+            <Button text="Submit" type="Emphasized" press="pressSubmit" />
+            <Button text="Cancel" type="Emphasized" press="pressCancel" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

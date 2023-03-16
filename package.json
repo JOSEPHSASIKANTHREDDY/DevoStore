@@ -1,0 +1,93 @@
+{
+    "name": "Aarinidemos",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/approuter": "^13.0.1",
+        "@sap/cds": "^5",
+        "@sap/cds-dk": "^6.4.1",
+        "@sap/cds-foss": "^4.0.0",
+        "@sap/xssec": "^3",
+        "aws-sdk": "^2.1321.0",
+        "ci": "^2.2.0",
+        "express": "^4",
+        "hdb": "^0.19.5",
+        "passport": "^0.6.0"
+    },
+    "scripts": {
+        "dev": "cds watch --profile hybrid",
+        "start": "cds run",
+        "watch-aarinidemodetails": "cds watch --open aarinidemodetails/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy Aarinidemos --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "engines": {
+        "node": "^16.15"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "cds": {
+        "build": {
+            "tasks": [
+                {
+                    "for": "hana",
+                    "dest": "../db"
+                },
+                {
+                    "for": "node-cf"
+                }
+            ]
+        },
+        "requires": {
+            "db": {
+                "kind": "hana-cloud"
+            },
+            "auth": {
+                "strategy": "mock",
+                "users": {
+                    "testuser": {
+                        "tenant": "test-tenant"
+                    }
+                },
+                "kind": "xsuaa"
+            },
+            "approuter": {
+                "kind": "cloudfoundry"
+            }
+        }
+    },
+    "sapux": [
+        "app/aarinidemodetails"
+    ],
+    "devDependencies": {
+        "@sap/ux-specification": "^1.108.0",
+        "rimraf": "^3.0.2"
+    }
+}

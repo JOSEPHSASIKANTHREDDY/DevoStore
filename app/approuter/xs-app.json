@@ -1,0 +1,30 @@
+{
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/demos/(.*)$",
+      "target": "/aarinidemoappsaarinidemoapps/$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^/registerdemo/(.*)$",
+      "target": "/aarinidemodetailsaarinidemodetails/$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^/user-api(.*)",
+      "target": "$1",
+      "service": "sap-approuter-userapi"
+    },
+    {
+      "source": "^/(.*)$",
+      "target": "$1",
+      "destination": "srv-api",
+      "authenticationType": "xsuaa",
+      "csrfProtection": true
+    }
+  ],
+  "welcomeFile": "/aarinidemodetailsaarinidemodetails"
+}

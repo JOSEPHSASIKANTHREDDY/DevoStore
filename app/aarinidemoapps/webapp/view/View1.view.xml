@@ -1,0 +1,117 @@
+<mvc:View controllerName="aarinidemoapps.aarinidemoapps.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+    <Page id="page" showHeader="false" showSubHeader="true" title="{i18n>title}" xmlns:html="http://www.w3.org/1999/xhtml">
+        <subHeader>
+            <Bar class="customBarClass">
+                <contentLeft>
+                    <Image src="./Images/logo_aarini_white.png" width="4rem" class="" />
+                </contentLeft>
+                <contentMiddle>
+                    <Title text="{i18n>title}" level="H4" class="" />
+                </contentMiddle>
+                <contentRight>
+                    <SearchField width="12rem" liveChange="onSearchDemo" class="sapUiSmallMarginEnd" />
+                    <!-- <core:Icon src="sap-icon://search" class="size1 sapUiSmallMarginEnd " color="#62d7c9" size="1.2rem" /> -->
+
+                    <!-- <core:Icon src="sap-icon://task" class="size1 sapUiSmallMarginEnd " color="#62d7c9" size="1.2rem" />
+                    <core:Icon src="sap-icon://bell" class="size1 sapUiSmallMarginEnd " color="#B167D3" size="1.2rem" />
+                    <core:Icon src="sap-icon://grid" class="size1 sapUiSmallMarginEnd " color="#FF5252" size="1.2rem" />
+                    <core:Icon src="sap-icon://action-settings" class="size1 sapUiSmallMarginEnd " color="#FF8427" size="1.2rem" /> -->
+
+                    <!-- <core:Icon src="sap-icon://task" class="size1 sapUiSmallMarginEnd " color="white" size="1.2rem" />
+                    <core:Icon src="sap-icon://bell" class="size1 sapUiSmallMarginEnd " color="white" size="1.2rem" />
+                    <core:Icon src="sap-icon://grid" class="size1 sapUiSmallMarginEnd " color="white" size="1.2rem" />
+                    <core:Icon src="sap-icon://action-settings" class="size1 sapUiSmallMarginEnd " color="white" size="1.2rem" /> -->
+                </contentRight>
+            </Bar>
+        </subHeader>
+        <content>
+            <SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master">
+                <detailPages>
+                    <Page showHeader="false" id="detail" title="Detail 1">
+                        <FlexBox id="idTileContainer" wrap="Wrap" class="sapUiTinyMarginBegin sapUiTinyMarginTop" items="{path: '/'}">
+                            <VBox height="15rem" width="17rem" backgroundDesign="Solid" class="sapUiTinyMarginBeginEnd sapUiSmallMarginTopBottom customTileClass">
+                                <Text text="{applicationName}" class="sapUiTinyMargin boldFont" maxLines="1" width="15rem" tooltip='{applicationName}' />
+                                <VBox height="4.6rem">
+                                    <Text text="{description}" class="sapUiTinyMarginBeginEnd sapUiTinyMarginBottom font075" maxLines="5" wrappingType="Normal" wrapping="true" />
+                                </VBox>
+                                <HBox class="hLine" />
+                                <HBox>
+                                    <Text text="Created By :" class="sapUiTinyMarginBeginEnd font075" />
+                                    <Link text="{demoCreatedBy}" class="font075 marginTop02" />
+                                </HBox>
+                                <HBox>
+                                    <Text text="Created On :" class="sapUiTinyMarginBeginEnd font075" />
+                                    <Link text="{ path: 'demoCreationDate', type: 'sap.ui.model.odata.type.Date', format: { pattern: 'yyyy-MM-dd' } }" class="font075 marginTop02" />
+                                </HBox>
+                                <!-- <HBox>
+                                    <Text text="Diagram Link :" class="sapUiTinyMarginBeginEnd font075" />
+                                    <Link text="Click here" class="font075 marginTop02" href="{diagramLink}" target="_blank" />
+                                </HBox> -->
+                                <HBox>
+                                    <Text text="Status :" class="sapUiTinyMarginEnd sapUiMediumMarginBegin font075" />
+                                    <Button icon="sap-icon://physical-activity" class="idStatusButton sapUiTinyMarginBegin" type="Success" />
+                                </HBox>
+                                <Button text="View Details" class="customViewDetailClass" press="toDetail" />
+                            </VBox>
+                        </FlexBox>
+                    </Page>
+                    <Page showHeader="true" id="detail2" title="Demo Application Details" titleAlignment="Center" showNavButton="true" navButtonPress="toHome">
+                        <content>
+                            <VBox class="sapUiTinyMargin">
+                                <f:SimpleForm id="SimpleFormDisplayColumn_oneGroup" editable="false" layout="ColumnLayout" title="{/applicationName}">
+                                    <f:content>
+                                        <Label text="Application Id" />
+                                        <Text text="{/demoId}" class="font075" />
+                                        <Label text="Description" />
+                                        <Text text="{/description}" class="font075" />
+                                        <Label text="Application Area" />
+                                        <Text text="{/applicationAreaName}" class="font075" />
+                                        <Label text="Application Sub Area" />
+                                        <Text text="{/subAreaName}" class="font075" />
+                                        <Label text="Industry" />
+                                        <Text text="{/industry}" class="font075" />
+                                        <Label text="Creation On" />
+                                        <Text text="{/demoCreationDate}" class="font075" />
+                                        <Label text="Created By" />
+                                        <Text text="{/demoCreatedBy}" class="font075" />
+                                        <Label text="Point Of ontact" />
+                                        <Text text="{/pointOfContact}" class="font075" />
+                                    </f:content>
+                                </f:SimpleForm>
+                            </VBox>
+                            <VBox backgroundDesign="Solid" class="sapUiTinyMargin sapUiSmallMarginBottom">
+                                <Title level="H4" text="Architectural Diagram" class="sapUiTinyMargin sapUiSmallMarginBegin" />
+                                <Carousel class="sapUiTinyMargin sapUiContentPadding" loop="true" id="idCarousel" pages="{/diagramLink}" height="44.5rem" arrowsPlacement="PageIndicator" pageIndicatorPlacement="Bottom">
+                                    <pages>
+                                        <Image src="{imageURL}" alt="{fileName}" />
+                                    </pages>
+                                </Carousel>
+                            </VBox>
+                            <VBox backgroundDesign="Solid" id="videoBox" alignItems="Center" alignContent="Center" justifyContent="Center" width="100%" height="38rem" class="sapUiTinyMargin">
+                                <html:iframe id="videoId" width="966" height="543" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" />
+                            </VBox>
+                        </content>
+                    </Page>
+                </detailPages>
+                <masterPages>
+                    <Page showHeader="false" id="master" title="Master 1" class="masterPage">
+                        <Panel expanded="true" expandable="true" headerText="Application Area" width="auto" class="sapUiResponsiveMargin customPanelClass" height="25%" backgroundDesign="Transparent">
+                            <content>
+                                <List id="idAreaList" mode="MultiSelect" selectionChange="selectArea" backgroundDesign="Transparent" class="customListClass" items="{path: '/'}">
+                                    <StandardListItem title="{applicationAreaName}" press="" />
+                                </List>
+                            </content>
+                        </Panel>
+                        <Panel expanded="true" expandable="true" headerText="Application Sub Area" width="auto" class="sapUiResponsiveMargin customPanelClass" height="70%" backgroundDesign="Transparent">
+                            <content>
+                                <List id="idSubAreaList" mode="MultiSelect" selectionChange="selectSubArea" backgroundDesign="Transparent" class="customListClass" items="{path: '/'}">
+                                    <StandardListItem title="{subAreaName}" tooltip='{subAreaName}' press="" />
+                                </List>
+                            </content>
+                        </Panel>
+                    </Page>
+                </masterPages>
+            </SplitApp>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,96 @@
+<mvc:View controllerName="aarinidemodetails.aarinidemodetails.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:main="sap.ui.webc.main"
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+    <Page id="page" title="" showHeader="false" showSubHeader="true" class="backgroundImage"  >
+    <subHeader>
+            <Bar class="">
+                <contentLeft>
+                    <Image src="./Images/logo_aarini.png" width="6rem" class=""></Image>        
+                </contentLeft>
+                <contentMiddle>
+                    <Title text="{i18n>title}" level="H2" class="sapUiTinyMarginTop"></Title>
+                </contentMiddle>
+                <contentRight>
+					<!-- <core:Icon src="sap-icon://search" class="size1 sapUiSmallMarginEnd sapUiTinyMarginTop" color="#62d7c9" size="1.4rem" />
+					<core:Icon src="sap-icon://task" class="size1 sapUiSmallMarginEnd sapUiTinyMarginTop" color="#B167D3" size="1.4rem" />
+					<core:Icon src="sap-icon://bell" class="size1 sapUiSmallMarginEnd sapUiTinyMarginTop" color="#FF5252" size="1.4rem" />
+					<core:Icon src="sap-icon://grid" class="size1 sapUiSmallMarginEnd sapUiTinyMarginTop" color="#FF8427" size="1.4rem" />	 -->
+
+					<!-- <core:Icon src="sap-icon://search" class="size1" color="#016FF2" size="1.4rem" />
+					<core:Icon src="sap-icon://task" class="size1" color="#016FF2" size="1.4rem" />
+					<core:Icon src="sap-icon://bell" class="size1" color="#016FF2" size="1.4rem" />
+					<core:Icon src="sap-icon://grid" class="size1" color="#016FF2" size="1.4rem" />			 -->
+                </contentRight>
+            </Bar>
+		</subHeader>
+    <content>
+	<!-- selectionChange="pressItem" -->
+          <Table id="idDemoDetailsTable" class="demoDetailsTable" 
+		inset="false"
+		items="{
+			path: '/',
+			sorter: {
+				path: 'Name'
+			}
+		}">
+		<headerToolbar>
+		<Toolbar>
+		<SearchField width="15rem" liveChange="onSearch"></SearchField>
+		<ToolbarSpacer />
+		<Button type="Emphasized" text="New Demo Application"  press="handleOpen" ariaHasPopup="Dialog" icon="sap-icon://add-document" />
+		</Toolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Available running demo applications in Aarini"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Application Name" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Application Area" />
+			</Column>
+            <Column
+				width="12em">
+				<Text text="Application Sub Area" />
+			</Column>
+            <Column
+				width="12em">
+				<Text text="Industry" />
+			</Column>
+            <Column
+				width="12em">
+				<Text text="Created on" />
+			</Column>
+            <Column
+				width="12em">
+				<Text text="Point of Contact" />
+			</Column>
+			<Column
+				width="2rem">
+				<Text text="" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle" press="pressItem" type="Active">
+				<cells>
+					<ObjectIdentifier
+						title="{applicationName}"
+						text="Created by : {demoCreatedBy}"/>
+					<Text text="{applicationAreaName}" />
+                    <Text text="{subAreaName}" />
+                    <Text text="{industry}" />
+                    <Text text="{demoCreationDate}" />
+                    <Text text="{pointOfContact}" />
+					<core:Icon src="sap-icon://navigation-right-arrow" class="size1" color="#016FF2" size="1.4rem" />					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+        </content>
+    </Page>
+</mvc:View>

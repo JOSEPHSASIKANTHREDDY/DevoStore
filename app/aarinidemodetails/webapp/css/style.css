@@ -1,0 +1,44 @@
+.backgroundImage{
+    background: url(../Images/bg3.jpeg) !important;
+}
+.sapMIBar.sapMSubHeader-CTX {
+    background-color: transparent !important;
+}
+.demoDetailsTable{
+    box-shadow: 0rem 0rem 0.5rem 0rem #8080808f;
+    width: 98% !important;
+    margin: 1% !important;
+}
+
+sapMPage .sapMPageHeader:not(.sapMIBar-CTX):after, .sapMPageWithSubHeader .sapMPageSubHeader:not(.sapMIBar-CTX):after {
+    box-shadow: none !important;
+}
+.sapMBar {
+    box-shadow: none !important;
+    height: 3rem !important;
+    line-height: 3rem !important;
+}
+/* .sapMBarLeft {
+    height: 3rem !important;
+    line-height: 3rem !important;
+}
+.sapMBarMiddle {
+    height: 3rem !important;
+    line-height: 3rem !important;
+}
+.sapMBarRight {
+    height: 3rem !important;
+    line-height: 3rem !important;
+} */
+/* .sapUiSizeCompact .sapMPageWithSubHeader>section {
+    top: 3rem !important;
+} */
+.sapMSFF {
+    /* border: 2px solid #0070f2;
+    border-radius: 0.25rem; */
+    background: none;
+    background-color: transparent;
+}
+.sapMLIBShowSeparator>td {
+    border-top: none;
+}
